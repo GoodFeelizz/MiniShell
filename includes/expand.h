@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   expand.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: togomez <togomez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 10:39:17 by togomez           #+#    #+#             */
-/*   Updated: 2025/04/28 08:20:48 by togomez          ###   ########.fr       */
+/*   Created: 2025/04/28 08:15:19 by togomez           #+#    #+#             */
+/*   Updated: 2025/04/28 09:33:25 by togomez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef EXPAND_H
+# define EXPAND_H
 
-# include "libft/libft.h"
-# include "parsing.h"
-# include "stdio.h"
-# include "expand.h"
+# include <stdbool.h>
+# include "minishell.h"
 
-typedef struct s_minishell
+typedef struct s_minishell	t_minishell;
+
+typedef struct s_env
 {
-	t_cmd	*commands;
-	t_env	*envi;
-	int		exit_status;
-	int		n_line;
-}				t_minishell;
+	char			*name;
+	char			*val;
+	struct s_env	*next;
+}				t_env;
+
+t_env		*env_new(char	*var_name, char	*var_val);
+t_env		*env_last(t_env *lst);
+void		env_add_back(t_env **lst, t_env *new);
+void		env_clear(t_env *lst);
+int			env_size(t_env *env);
 
 #endif

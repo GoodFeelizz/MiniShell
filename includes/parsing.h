@@ -6,7 +6,7 @@
 /*   By: togomez <togomez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 10:32:10 by togomez           #+#    #+#             */
-/*   Updated: 2025/04/25 11:21:11 by togomez          ###   ########.fr       */
+/*   Updated: 2025/04/28 08:31:46 by togomez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct s_cmd
 	__pid_t			pid;
 	struct s_cmd	*next;
 }				t_cmd;
+
+typedef struct s_minishell	t_minishell;
 
 t_token		*token_new(char *val, t_arg type);
 t_token		*token_last(t_token *lst);
